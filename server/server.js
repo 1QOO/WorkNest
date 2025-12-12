@@ -1,14 +1,17 @@
-const {createServer} = require('node:http');
+import * as http from 'node:http';
+import login from './api/login.mts';
+import isAuth from './api/auth.mts';
 
-const hostname = '127.0.0.1';
+const hostname = "127.0.0.1";
 const port = 5000;
 
-const server = createServer((req ,res)=>{
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end("Hello World!");
+const server = http.createServer((req ,res)=>{
+    if(req.url === "/api/login"){
+        login(req, res);
+    }
+    else if(req.url === "api/auth"){
+        isAuth(req, res);
+    }
 })
 
-server.listen(port ,hostname ,()=>{
-    console.log(`Server is listening on http://${hostname}:${port}`);
-});
+server.listen(port ,hostname ,()=>console.log(`Linstening on http://${hostname} port ${port}`));

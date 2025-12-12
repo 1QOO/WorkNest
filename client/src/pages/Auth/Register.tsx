@@ -19,7 +19,7 @@ function Register(){
                     focus:border-amber-600 focus:outline-none" />
 
                     <label htmlFor="role">Role:</label>
-                    <select name="role" id="role" required
+                    <select name="role" id="role" required disabled
                     className="
                     border-2 border-gray-400 rounded-md
                     mb-4 
